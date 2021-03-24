@@ -1,0 +1,30 @@
+Q. 2.7.1
+/* Declaration of data type where 
+4 bytes are packed into an unsigned */ 
+typedef unsigned packed_t;
+
+/* Extract byte from word. 
+Return as signed integer */ 
+
+int xbyte(packed_t word, int bytenum);
+
+/* Failed attempt at xbyte */ 
+
+int xbyte(packed_t word, int bytenum) 
+{ 
+return (word >> (bytenum << 3)) & 0xFF; 
+}
+
+A. The code does not include sign extension, therefore it would not work for negative numbers.
+
+B. int byte(packed_t word, int bytenum){
+	int Mbyte = word << ((3 - bytenum)<<3);
+	return Mbyte >> 24;
+}
+
+Q. 2.8.2
+A. False, Ex./ x = 1, y = TMIN
+B. True, suffices multiple distribution
+C. False, Ex./ x == y (i.e. 0110)
+D. True, the unsigned and signed patterns are identical
+E. True, shifting right and then left removes the 2 least significant bits (if any), making the value either less than or equal to the original value.
